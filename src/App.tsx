@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { featured, profile, projects, skills, type Category, type Project } from './data'
+import { certifications, education, experience, featured, profile, projects, skills, type Category, type Project } from './data'
 
 type Theme = 'light' | 'dark'
 const filters: ('All' | Category)[] = ['All', 'Backend', 'Frontend', 'Desktop & Console']
@@ -69,9 +69,10 @@ export default function App() {
   const shown = filter === 'All' ? projects : projects.filter(p => p.category === filter)
 
   const contacts = [
-    { label: 'GitHub', value: `@${profile.handle}`, url: profile.github },
     profile.email && { label: 'Email', value: profile.email, url: `mailto:${profile.email}` },
+    profile.phone && { label: 'Phone', value: profile.phone, url: `tel:${profile.phone.replace(/\s/g, '')}` },
     profile.linkedin && { label: 'LinkedIn', value: 'LinkedIn', url: profile.linkedin },
+    { label: 'GitHub', value: `@${profile.handle}`, url: profile.github },
     profile.cv && { label: 'CV', value: 'Download CV', url: profile.cv },
   ].filter(Boolean) as { label: string; value: string; url: string }[]
 
@@ -81,11 +82,12 @@ export default function App() {
         <div className="container nav-inner">
           <a href="#top" className="logo">
             <span className="accent">&lt;</span>
-            {profile.name}
+            {profile.nickname}
             <span className="accent"> /&gt;</span>
           </a>
           <nav>
             <a href="#about">About</a>
+            <a href="#experience">Experience</a>
             <a href="#work">Work</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
@@ -98,19 +100,30 @@ export default function App() {
 
       <main id="top">
         <section className="hero container">
-          <p className="eyebrow mono">Hi, I'm {profile.name} 👋</p>
-          <h1>
-            {profile.role}
-            <span className="accent">.</span>
-          </h1>
-          <p className="lead">{profile.tagline}</p>
-          <div className="cta">
-            <a className="btn primary" href="#work">
-              See my work
-            </a>
-            <a className="btn" href={profile.github} target="_blank" rel="noreferrer">
-              <GitHubIcon /> GitHub
-            </a>
+          <div className="hero-text">
+            <p className="eyebrow mono">Hi, I'm {profile.name} 👋</p>
+            <h1>
+              {profile.role}
+              <span className="accent">.</span>
+            </h1>
+            <p className="lead">{profile.tagline}</p>
+            <div className="cta">
+              <a className="btn primary" href="#work">
+                See my work
+              </a>
+              {profile.cv && (
+                <a className="btn" href={profile.cv} target="_blank" rel="noreferrer">
+                  Download CV
+                </a>
+              )}
+              <a className="btn" href={profile.github} target="_blank" rel="noreferrer">
+                <GitHubIcon /> GitHub
+              </a>
+            </div>
+            <p className="location mono">📍 {profile.location}</p>
+          </div>
+          <div className="portrait">
+            <img src={profile.photo} alt={`Portrait of ${profile.name}`} width="600" height="600" />
           </div>
           <pre className="terminal mono" aria-hidden="true">
             <span className="dim">$</span> dotnet run --project BHL.Api{'\n'}
@@ -141,9 +154,60 @@ export default function App() {
           </div>
         </section>
 
+        <section id="experience" className="container section">
+          <h2>
+            <span className="num mono">02.</span> Experience
+          </h2>
+          <ol className="timeline">
+            {experience.map(job => (
+              <li key={job.role + job.company}>
+                <div className="job-head">
+                  <h3>
+                    {job.role} <span className="accent">@ {job.company}</span>
+                  </h3>
+                  <span className="period mono">{job.period}</span>
+                </div>
+                <ul className="highlights">
+                  {job.points.map(pt => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          <div className="creds">
+            <div className="card">
+              <h3 className="mono small-head">Education</h3>
+              {education.map(e => (
+                <div key={e.title}>
+                  <strong>{e.title}</strong>
+                  <p>{e.detail}</p>
+                </div>
+              ))}
+            </div>
+            <div className="card">
+              <h3 className="mono small-head">Certifications</h3>
+              {certifications.map(c => (
+                <div key={c.title}>
+                  <strong>
+                    {'url' in c && c.url ? (
+                      <a href={c.url} target="_blank" rel="noreferrer">
+                        {c.title} ↗
+                      </a>
+                    ) : (
+                      c.title
+                    )}
+                  </strong>
+                  <p>{c.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="work" className="container section">
           <h2>
-            <span className="num mono">02.</span> Featured work
+            <span className="num mono">03.</span> Featured work
           </h2>
           <div className="featured">
             {featured.map((p, i) => (
@@ -166,7 +230,7 @@ export default function App() {
 
         <section id="projects" className="container section">
           <h2>
-            <span className="num mono">03.</span> More projects
+            <span className="num mono">04.</span> More projects
           </h2>
           <div className="filters" role="tablist">
             {filters.map(f => (
@@ -203,10 +267,10 @@ export default function App() {
 
         <section id="contact" className="container section contact">
           <h2>
-            <span className="num mono">04.</span> Get in touch
+            <span className="num mono">05.</span> Get in touch
           </h2>
           <p className="lead">
-            Open to full-stack and backend roles, freelance work and collaborations. The fastest way to reach me is below.
+            Open to full-stack and .NET roles, freelance work and collaborations. Email is the fastest way to reach me.
           </p>
           <div className="cta">
             {contacts.map(c => (

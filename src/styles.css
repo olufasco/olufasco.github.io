@@ -427,7 +427,8 @@ h2::after {
 
 @media (max-width: 640px) {
   .container {
-    padding: 0 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .nav nav {
@@ -451,5 +452,129 @@ h2::after {
   .card,
   .btn {
     transition: none;
+  }
+}
+
+/* Hero with portrait */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero .terminal {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+}
+
+.location {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 20px 0 0;
+}
+
+.portrait {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 300px;
+}
+
+.portrait::before {
+  content: '';
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 2px solid var(--accent);
+  border-radius: 18px;
+}
+
+.portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+/* Experience */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 24px;
+  border-left: 2px solid var(--border);
+}
+
+.timeline > li {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.timeline > li::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+
+.job-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+}
+
+.job-head h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.period {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.creds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.small-head {
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.creds strong {
+  font-size: 0.97rem;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .portrait {
+    justify-self: start;
+    max-width: 240px;
+    order: -1;
+  }
+
+  .creds {
+    grid-template-columns: 1fr;
   }
 }

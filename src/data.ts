@@ -16,34 +16,100 @@ export interface Project {
 }
 
 export const profile = {
-  name: 'Fasco',
+  name: 'Oluwasegun Adedeji',
+  nickname: 'Fasco',
   handle: 'olufasco',
-  role: 'Full-Stack Developer',
+  role: 'Full-Stack .NET Developer',
+  location: 'Lagos, Nigeria',
+  photo: '/profile.jpg',
   tagline:
     'I build ASP.NET Core APIs and the React front ends that sit on top of them: clean domain models, secure auth and interfaces people enjoy using.',
   about: [
-    'I work across the whole stack. On the server that means C#, ASP.NET Core, Entity Framework Core and SQL Server, structured with Clean Architecture, CQRS and the repository/unit-of-work patterns when a project calls for it. On the client it means React and TypeScript.',
-    'My current flagship is BHL, a PS5 football league platform with automatic promotion and relegation, knockout cups and admin-managed results, built end to end on .NET 8 and React.',
+    "I'm a .NET full-stack developer with over three years of experience shipping web and desktop applications with C#, ASP.NET Core, MVC, Web API, Entity Framework and SQL Server. I write clean, maintainable code guided by OOP and SOLID, and I'm comfortable on the front end with React, TypeScript, HTML, CSS and JavaScript.",
+    'I currently work as a .NET Associate Developer at Zentrium Business Solutions in an Agile/Scrum team. Before that I built production systems at Ugrace Technologies, where I also taught C# to beginners, so I enjoy explaining complex technical ideas clearly.',
+    'Outside work, my flagship project is BHL, a PS5 football league platform with automatic promotion and relegation, knockout cups and admin-managed results, built end to end on .NET 8 and React.',
   ],
   github: 'https://github.com/olufasco',
-  // Add these to show them in the Contact section. Empty values are hidden.
-  email: '',
-  linkedin: '',
-  cv: '',
+  // Contact details. Empty values are hidden.
+  email: 'olufasco1@gmail.com',
+  phone: '+234 806 821 6234',
+  linkedin: 'https://www.linkedin.com/in/oluwasegun-adedeji-340b68394',
+  cv: '/Oluwasegun_Adedeji_Resume.pdf',
 }
 
 export const skills: { group: string; items: string[] }[] = [
   {
-    group: 'Backend',
-    items: ['C#', '.NET 8 / 9', 'ASP.NET Core Web API', 'ASP.NET Core MVC', 'Entity Framework Core', 'ASP.NET Identity', 'JWT & refresh tokens', 'MediatR / CQRS', 'FluentValidation', 'AutoMapper', 'Serilog'],
+    group: 'Backend & .NET',
+    items: ['C#', '.NET 8 / 9', 'ASP.NET Core Web API', 'ASP.NET MVC', 'Entity Framework Core', 'Dapper', 'LINQ', 'ASP.NET Identity', 'JWT & refresh tokens', 'MediatR / CQRS', 'FluentValidation', 'AutoMapper', 'Serilog'],
   },
   {
-    group: 'Frontend',
-    items: ['React', 'TypeScript', 'JavaScript', 'React Router', 'Axios', 'Vite', 'HTML & CSS'],
+    group: 'Frontend & Desktop',
+    items: ['React', 'TypeScript', 'JavaScript', 'React Router', 'Razor Views', 'HTML & CSS', 'WinForms', 'WPF'],
   },
   {
-    group: 'Data & DevOps',
-    items: ['SQL Server', 'PostgreSQL', 'MySQL', 'Docker', 'GitHub Actions', 'CI/CD', 'Swagger / OpenAPI', 'Git'],
+    group: 'Data, Tools & Practices',
+    items: ['SQL Server', 'MySQL', 'PostgreSQL', 'Stored procedures', 'Git & GitHub', 'Docker', 'GitHub Actions', 'Azure DevOps', 'Postman', 'Swagger', 'xUnit / NUnit', 'SOLID', 'Agile / Scrum'],
+  },
+]
+
+export interface Job {
+  role: string
+  company: string
+  period: string
+  points: string[]
+}
+
+export const experience: Job[] = [
+  {
+    role: '.NET Associate Developer',
+    company: 'Zentrium Business Solutions',
+    period: 'Jan 2025 – Present',
+    points: [
+      'Contribute to a Library Management System built with ASP.NET MVC and Web API, focusing on clean, testable code.',
+      'Implement RESTful endpoints for the book catalogue, member management and transactions with correct HTTP verbs and status codes.',
+      'Use EF Core and SQL Server for data access: migrations, relationships and LINQ queries.',
+      'Collaborate through Git/GitHub pull requests and code reviews within an Agile/Scrum team.',
+    ],
+  },
+  {
+    role: '.NET Developer',
+    company: 'Ugrace Technologies',
+    period: 'Feb 2023 – Jan 2025',
+    points: [
+      'Developed and maintained production applications with C#, WinForms and ASP.NET MVC.',
+      'Built a Student Clearance System that automated clearance workflows and status tracking, reducing manual processing.',
+      'Developed a Poultry Farm Management System covering inventory, feed usage, expenses and sales with dashboard reports.',
+      'Designed and consumed RESTful APIs and integrated SQL Server through Entity Framework.',
+    ],
+  },
+  {
+    role: 'C# Programming Tutor',
+    company: 'Ugrace Technologies',
+    period: 'Aug 2022 – Dec 2023',
+    points: [
+      'Taught C# from the basics to intermediate topics: OOP, collections and exception handling.',
+      'Guided students through console apps, desktop apps and introductory ASP.NET projects.',
+      'Created lesson materials, exercises and mini-projects, and helped students debug and adopt good practices.',
+    ],
+  },
+]
+
+export const education = [
+  {
+    title: 'Higher National Diploma (HND), Software and Web Development',
+    detail: 'Harvarde College, Abeokuta, Ogun State · 2025',
+  },
+]
+
+export const certifications = [
+  {
+    title: 'Scrum Fundamentals Certified (SCRUMstudy)',
+    detail: 'October 2025',
+    url: 'https://www.scrumstudy.com/certification/verify?type=SFC&number=1118007',
+  },
+  {
+    title: 'Jobberman Soft Skills Certification',
+    detail: 'Soft skills training and final assessment',
   },
 ]
 
